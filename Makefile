@@ -6,7 +6,7 @@
 #    By: pribault <pribault@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/19 17:51:26 by pribault          #+#    #+#              #
-#    Updated: 2018/06/21 17:07:18 by pribault         ###   ########.fr        #
+#    Updated: 2018/06/22 10:07:47 by pribault         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ SRC_DIR =	src
 OBJ_DIR =	.obj
 INC_DIR =	include
 
-SRC =	avm.cpp OperandFactory.cpp
+SRC =	avm.cpp OperandFactory.cpp ShuntingYard.cpp Log.cpp
 OBJ =	$(sort $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRC)))
-INC =	avm.hpp IOperand.hpp OperandFactory.hpp Operand.hpp
+INC =	avm.hpp IOperand.hpp OperandFactory.hpp Operand.hpp Log.hpp
 DEP =	$(sort $(patsubst %.hpp, $(INC_DIR)/%.hpp, $(INC)))
 
 .PHONY: all clean fclean re
@@ -40,6 +40,6 @@ clean:
 	rm -rf $(OBJ_DIR)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) log
 
 re: fclean all

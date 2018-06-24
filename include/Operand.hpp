@@ -304,6 +304,8 @@ class	Operand : public IOperand
 			{
 				case Int8:
 				{
+					if (!std::stoi(rhs.toString()))
+						throw (DivisionByZeroException());
 					if (getPrecision() < rhs.getPrecision())
 						return (operandFactory.createOperand(
 							rhs.getType(),
@@ -318,6 +320,8 @@ class	Operand : public IOperand
 				}
 				case Int16:
 				{
+					if (!std::stoi(rhs.toString()))
+						throw (DivisionByZeroException());
 					if (getPrecision() < rhs.getPrecision())
 						return (operandFactory.createOperand(
 							rhs.getType(),
@@ -332,6 +336,8 @@ class	Operand : public IOperand
 				}
 				case Int32:
 				{
+					if (!std::stoi(rhs.toString()))
+						throw (DivisionByZeroException());
 					if (getPrecision() < rhs.getPrecision())
 						return (operandFactory.createOperand(
 							rhs.getType(),
@@ -346,6 +352,8 @@ class	Operand : public IOperand
 				}
 				case Float:
 				{
+					if (!std::stod(rhs.toString()))
+						throw (DivisionByZeroException());
 					if (getPrecision() < rhs.getPrecision())
 						return (operandFactory.createOperand(
 							rhs.getType(),
@@ -360,6 +368,8 @@ class	Operand : public IOperand
 				}
 				case Double:
 				{
+					if (!std::stod(rhs.toString()))
+						throw (DivisionByZeroException());
 					if (getPrecision() < rhs.getPrecision())
 						return (operandFactory.createOperand(
 							rhs.getType(),
@@ -384,11 +394,13 @@ class	Operand : public IOperand
 		{
 			if (getType() == Float ||
 				getType() == Double)
-				throw (FloatModulo());
+				throw (FloatModulus());
 			switch (rhs.getType())
 			{
 				case Int8:
 				{
+					if (!std::stoi(rhs.toString()))
+						throw (DivisionByZeroException());
 					if (getPrecision() < rhs.getPrecision())
 						return (operandFactory.createOperand(
 							rhs.getType(),
@@ -403,6 +415,8 @@ class	Operand : public IOperand
 				}
 				case Int16:
 				{
+					if (!std::stoi(rhs.toString()))
+						throw (DivisionByZeroException());
 					if (getPrecision() < rhs.getPrecision())
 						return (operandFactory.createOperand(
 							rhs.getType(),
@@ -417,6 +431,8 @@ class	Operand : public IOperand
 				}
 				case Int32:
 				{
+					if (!std::stoi(rhs.toString()))
+						throw (DivisionByZeroException());
 					if (getPrecision() < rhs.getPrecision())
 						return (operandFactory.createOperand(
 							rhs.getType(),
@@ -431,12 +447,12 @@ class	Operand : public IOperand
 				}
 				case Float:
 				{
-					throw (FloatModulo());
+					throw (FloatModulus());
 					break;
 				}
 				case Double:
 				{
-					throw (FloatModulo());
+					throw (FloatModulus());
 					break;
 				}
 				default:
@@ -461,12 +477,21 @@ class	Operand : public IOperand
 				}
 		};
 
-		class	FloatModulo : std::exception
+		class	FloatModulus : std::exception
 		{
 			public:
 				virtual const char	*what(void) const noexcept
 				{
-					return ("modulo applied to floating point number");
+					return ("modulus applied to floating point number");
+				}
+		};
+
+		class	DivisionByZeroException : std::exception
+		{
+			public:
+				virtual const char	*what(void) const noexcept
+				{
+					return ("division or modulus by zero");
 				}
 		};
 
