@@ -4,5 +4,16 @@
 # include "IOperand.hpp"
 # include "ShuntingYard.hpp"
 # include "Log.hpp"
+# include "Exceptions.hpp"
+# include <iostream>
+# include <fstream>
+# include <stack>
+
+void	execute(const std::vector<std::string> *rpn, std::stack<IOperand *> &stack);
+
+extern std::vector<std::string>	functions;
+extern std::vector<std::string>	operators;
+extern std::vector<std::string>	brackets;
+extern std::vector<std::string>	comments;
 
 #endif

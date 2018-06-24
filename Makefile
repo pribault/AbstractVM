@@ -6,7 +6,7 @@
 #    By: pribault <pribault@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/19 17:51:26 by pribault          #+#    #+#              #
-#    Updated: 2018/06/22 10:07:47 by pribault         ###   ########.fr        #
+#    Updated: 2018/06/24 18:13:49 by pribault         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,12 @@ SRC_DIR =	src
 OBJ_DIR =	.obj
 INC_DIR =	include
 
-SRC =	avm.cpp OperandFactory.cpp ShuntingYard.cpp Log.cpp
+SRC =	avm.cpp OperandFactory.cpp ShuntingYard.cpp Log.cpp Exceptions.cpp\
+		execute.cpp
 OBJ =	$(sort $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRC)))
-INC =	avm.hpp IOperand.hpp OperandFactory.hpp Operand.hpp Log.hpp
-DEP =	$(sort $(patsubst %.hpp, $(INC_DIR)/%.hpp, $(INC)))
+INC =	avm.hpp OperandFactory.hpp ShuntingYard.hpp Log.hpp Exceptions.hpp\
+		IOperand.hpp Operand.hpp
+DEP =	$(sort Makefile $(patsubst %.hpp, $(INC_DIR)/%.hpp, $(INC)))
 
 .PHONY: all clean fclean re
 
