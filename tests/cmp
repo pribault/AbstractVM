@@ -1,0 +1,24 @@
+; -----
+; cmp -
+; -----
+
+push int32(42)
+
+cmp int32(42)
+dump
+pop
+push int8(10)
+print
+pop
+
+cmp int32(40)
+dump
+pop
+push int8(10)
+print
+pop
+
+cmp int32(44)
+dump
+
+exit

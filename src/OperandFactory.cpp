@@ -18,6 +18,7 @@ IOperand const	*OperandFactory::createOperand(eOperandType type, std::string con
 		{Int8, &OperandFactory::createInt8},
 		{Int16, &OperandFactory::createInt16},
 		{Int32, &OperandFactory::createInt32},
+		{Int64, &OperandFactory::createInt64},
 		{Float, &OperandFactory::createFloat},
 		{Double, &OperandFactory::createDouble},
 		{Int8, NULL}
@@ -34,7 +35,7 @@ IOperand const	*OperandFactory::createInt8(std::string const &value) const
 	IOperand	*result;
 
 	result = new Operand<int8_t>(std::stoi(value));
-	if (std::stoi(result->toString()) != stoi(value))
+	if (std::stoll(result->toString()) != std::stoll(value))
 		throw (std::out_of_range("stoi: out of range"));
 	return (static_cast<IOperand const *>(result));
 }
@@ -44,14 +45,24 @@ IOperand const	*OperandFactory::createInt16(std::string const &value) const
 	IOperand	*result;
 
 	result = new Operand<int16_t>(std::stoi(value));
-	if (std::stoi(result->toString()) != stoi(value))
+	if (std::stoll(result->toString()) != std::stoll(value))
 		throw (std::out_of_range("stoi: out of range"));
 	return (static_cast<IOperand const *>(result));
 }
 
 IOperand const	*OperandFactory::createInt32(std::string const &value) const
 {
-	return (static_cast<IOperand const *>(new Operand<int32_t>(std::stoi(value))));
+	IOperand	*result;
+
+	result = new Operand<int32_t>(std::stoi(value));
+	if (std::stoll(result->toString()) != std::stoll(value))
+		throw (std::out_of_range("stoi: out of range"));
+	return (static_cast<IOperand const *>(result));
+}
+
+IOperand const	*OperandFactory::createInt64(std::string const &value) const
+{
+	return (static_cast<IOperand const *>(new Operand<int64_t>(std::stoll(value))));
 }
 
 IOperand const	*OperandFactory::createFloat(std::string const &value) const

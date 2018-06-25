@@ -4,7 +4,11 @@
 
 push int8(128)
 push int8(-129)
-push int32(127)
+push int32(2147483648)
+push int64(2147483648)
+dump
+pop
+push int8(127)
 push int16(0)
 div
 push double(127)

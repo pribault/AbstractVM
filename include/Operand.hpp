@@ -30,6 +30,8 @@ class	Operand : public IOperand
 				return (Int16);
 			else if (std::is_same<T, int32_t>::value)
 				return (Int32);
+			else if (std::is_same<T, int64_t>::value)
+				return (Int64);
 			else if (std::is_same<T, float>::value)
 				return (Float);
 			else if (std::is_same<T, double>::value)
@@ -45,6 +47,8 @@ class	Operand : public IOperand
 				return (Int16);
 			else if (std::is_same<T, int32_t>::value)
 				return (Int32);
+			else if (std::is_same<T, int64_t>::value)
+				return (Int64);
 			else if (std::is_same<T, float>::value)
 				return (Float);
 			else if (std::is_same<T, double>::value)
@@ -59,17 +63,18 @@ class	Operand : public IOperand
 				case Int8:
 				case Int16:
 				case Int32:
+				case Int64:
 				{
 					if (getPrecision() < rhs.getPrecision())
 						return (operandFactory.createOperand(
 							rhs.getType(),
 							std::to_string(
-								_value + std::stoi(rhs.toString()))));
+								_value + std::stoll(rhs.toString()))));
 					else
 						return (operandFactory.createOperand(
 							getType(),
 							std::to_string(
-								_value + std::stoi(rhs.toString()))));
+								_value + std::stoll(rhs.toString()))));
 					break;
 				}
 				case Float:
@@ -102,17 +107,18 @@ class	Operand : public IOperand
 				case Int8:
 				case Int16:
 				case Int32:
+				case Int64:
 				{
 					if (getPrecision() < rhs.getPrecision())
 						return (operandFactory.createOperand(
 							rhs.getType(),
 							std::to_string(
-								_value - std::stoi(rhs.toString()))));
+								_value - std::stoll(rhs.toString()))));
 					else
 						return (operandFactory.createOperand(
 							getType(),
 							std::to_string(
-								_value - std::stoi(rhs.toString()))));
+								_value - std::stoll(rhs.toString()))));
 					break;
 				}
 				case Float:
@@ -145,17 +151,18 @@ class	Operand : public IOperand
 				case Int8:
 				case Int16:
 				case Int32:
+				case Int64:
 				{
 					if (getPrecision() < rhs.getPrecision())
 						return (operandFactory.createOperand(
 							rhs.getType(),
 							std::to_string(
-								_value * std::stoi(rhs.toString()))));
+								_value * std::stoll(rhs.toString()))));
 					else
 						return (operandFactory.createOperand(
 							getType(),
 							std::to_string(
-								_value * std::stoi(rhs.toString()))));
+								_value * std::stoll(rhs.toString()))));
 					break;
 				}
 				case Float:
@@ -188,19 +195,20 @@ class	Operand : public IOperand
 				case Int8:
 				case Int16:
 				case Int32:
+				case Int64:
 				{
-					if (!std::stoi(rhs.toString()))
+					if (!std::stoll(rhs.toString()))
 						throw (DivisionByZeroException());
 					if (getPrecision() < rhs.getPrecision())
 						return (operandFactory.createOperand(
 							rhs.getType(),
 							std::to_string(
-								_value / std::stoi(rhs.toString()))));
+								_value / std::stoll(rhs.toString()))));
 					else
 						return (operandFactory.createOperand(
 							getType(),
 							std::to_string(
-								_value / std::stoi(rhs.toString()))));
+								_value / std::stoll(rhs.toString()))));
 					break;
 				}
 				case Float:
@@ -238,19 +246,20 @@ class	Operand : public IOperand
 				case Int8:
 				case Int16:
 				case Int32:
+				case Int64:
 				{
-					if (!std::stoi(rhs.toString()))
+					if (!std::stoll(rhs.toString()))
 						throw (DivisionByZeroException());
 					if (getPrecision() < rhs.getPrecision())
 						return (operandFactory.createOperand(
 							rhs.getType(),
 							std::to_string(
-								static_cast<int32_t>(_value) % std::stoi(rhs.toString()))));
+								static_cast<int64_t>(_value) % std::stoll(rhs.toString()))));
 					else
 						return (operandFactory.createOperand(
 							getType(),
 							std::to_string(
-								static_cast<int32_t>(_value) % std::stoi(rhs.toString()))));
+								static_cast<int64_t>(_value) % std::stoll(rhs.toString()))));
 					break;
 				}
 				case Float:

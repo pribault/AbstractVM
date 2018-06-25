@@ -25,6 +25,7 @@ void	var(const std::string &token, std::stack<const IOperand *> &tmp, std::vecto
 		{"int8", Int8},
 		{"int16", Int16},
 		{"int32", Int32},
+		{"int64", Int64},
 		{"float", Float},
 		{"double", Double}
 	};
@@ -338,6 +339,7 @@ void	execute(const std::vector<std::string> *rpn, std::vector<const IOperand *> 
 		{"int8", &var, false, 1},
 		{"int16", &var, false, 1},
 		{"int32", &var, false, 1},
+		{"int64", &var, false, 1},
 		{"float", &var, false, 1},
 		{"double", &var, false, 1},
 		{"push", &push, true, 1},

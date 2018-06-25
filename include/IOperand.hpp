@@ -8,8 +8,9 @@ typedef enum	eOperandType
 	Int8 = 0,
 	Int16 = 1,
 	Int32 = 2,
-	Float = 3,
-	Double = 4
+	Int64 = 3,
+	Float = 4,
+	Double = 5
 }				eOperandType;
 
 class	IOperand
