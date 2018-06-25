@@ -325,6 +325,57 @@ void	dec(const std::string &token, std::stack<const IOperand *> &, std::vector<c
 	log << "decrementation done" << std::endl;
 }
 
+void	_and(const std::string &token, std::stack<const IOperand *> &, std::vector<const IOperand *> &stack, size_t &)
+{
+	const IOperand	*a;
+	const IOperand	*b;
+
+	if (stack.size() < 2)
+		throw (NotEnoughOperandsException(token));
+	b = stack.back();
+	stack.pop_back();
+	a = stack.back();
+	stack.pop_back();
+	stack.push_back(*a & *b);
+	delete a;
+	delete b;
+	log << "binary and done" << std::endl;
+}
+
+void	_or(const std::string &token, std::stack<const IOperand *> &, std::vector<const IOperand *> &stack, size_t &)
+{
+	const IOperand	*a;
+	const IOperand	*b;
+
+	if (stack.size() < 2)
+		throw (NotEnoughOperandsException(token));
+	b = stack.back();
+	stack.pop_back();
+	a = stack.back();
+	stack.pop_back();
+	stack.push_back(*a | *b);
+	delete a;
+	delete b;
+	log << "binary and done" << std::endl;
+}
+
+void	_xor(const std::string &token, std::stack<const IOperand *> &, std::vector<const IOperand *> &stack, size_t &)
+{
+	const IOperand	*a;
+	const IOperand	*b;
+
+	if (stack.size() < 2)
+		throw (NotEnoughOperandsException(token));
+	b = stack.back();
+	stack.pop_back();
+	a = stack.back();
+	stack.pop_back();
+	stack.push_back(*a ^ *b);
+	delete a;
+	delete b;
+	log << "binary and done" << std::endl;
+}
+
 typedef struct	s_data
 {
 	std::string	token;
@@ -363,6 +414,9 @@ void	execute(const std::vector<std::string> *rpn, std::vector<const IOperand *> 
 		{"jge", &jge, true, 1},
 		{"inc", &inc, true, 0},
 		{"dec", &dec, true, 0},
+		{"and", &_and, true, 0},
+		{"or", &_or, true, 0},
+		{"xor", &_xor, true, 0},
 		{"end", NULL, false, 0}
 	};
 	static const std::string		numbers = "0123456789.";

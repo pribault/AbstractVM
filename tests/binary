@@ -1,0 +1,32 @@
+; --------
+; binary -
+; --------
+
+push int8(0x7)
+push int8(0xe)
+and
+dump
+pop
+push int8(10)
+print
+pop
+
+push int8(0x7)
+push int8(0xe)
+or
+dump
+pop
+push int8(10)
+print
+pop
+
+push int8(0x7)
+push int8(0xe)
+xor
+dump
+pop
+push int8(10)
+print
+pop
+
+exit

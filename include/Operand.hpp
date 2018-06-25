@@ -276,6 +276,111 @@ class	Operand : public IOperand
 			}
 		}
 
+		virtual IOperand const	*operator&(IOperand const &rhs) const
+		{
+			switch (rhs.getType())
+			{
+				case Int8:
+				case Int16:
+				case Int32:
+				case Int64:
+				{
+					if (getPrecision() < rhs.getPrecision())
+						return (operandFactory.createOperand(
+							rhs.getType(),
+							std::to_string(
+								static_cast<int64_t>(_value) & std::stoll(rhs.toString()))));
+					else
+						return (operandFactory.createOperand(
+							getType(),
+							std::to_string(
+								static_cast<int64_t>(_value) & std::stoll(rhs.toString()))));
+					break;
+				}
+				case Float:
+				case Double:
+				{
+					throw (BinaryOnFloatException());
+					break;
+				}
+				default:
+				{
+					throw (UnknownTypeException());
+					break;
+				}
+			}
+		}
+
+		virtual IOperand const	*operator|(IOperand const &rhs) const
+		{
+			switch (rhs.getType())
+			{
+				case Int8:
+				case Int16:
+				case Int32:
+				case Int64:
+				{
+					if (getPrecision() < rhs.getPrecision())
+						return (operandFactory.createOperand(
+							rhs.getType(),
+							std::to_string(
+								static_cast<int64_t>(_value) | std::stoll(rhs.toString()))));
+					else
+						return (operandFactory.createOperand(
+							getType(),
+							std::to_string(
+								static_cast<int64_t>(_value) | std::stoll(rhs.toString()))));
+					break;
+				}
+				case Float:
+				case Double:
+				{
+					throw (BinaryOnFloatException());
+					break;
+				}
+				default:
+				{
+					throw (UnknownTypeException());
+					break;
+				}
+			}
+		}
+
+		virtual IOperand const	*operator^(IOperand const &rhs) const
+		{
+			switch (rhs.getType())
+			{
+				case Int8:
+				case Int16:
+				case Int32:
+				case Int64:
+				{
+					if (getPrecision() < rhs.getPrecision())
+						return (operandFactory.createOperand(
+							rhs.getType(),
+							std::to_string(
+								static_cast<int64_t>(_value) ^ std::stoll(rhs.toString()))));
+					else
+						return (operandFactory.createOperand(
+							getType(),
+							std::to_string(
+								static_cast<int64_t>(_value) ^ std::stoll(rhs.toString()))));
+					break;
+				}
+				case Float:
+				case Double:
+				{
+					throw (BinaryOnFloatException());
+					break;
+				}
+				default:
+				{
+					throw (UnknownTypeException());
+					break;
+				}
+			}
+		}
+
 		virtual bool			operator==(IOperand const &rhs) const
 		{
 			const IOperand	*result;
@@ -371,6 +476,15 @@ class	Operand : public IOperand
 				virtual const char	*what(void) const noexcept
 				{
 					return ("division or modulus by zero");
+				}
+		};
+
+		class	BinaryOnFloatException : public std::exception
+		{
+			public:
+				virtual const char	*what(void) const noexcept
+				{
+					return ("binary operator on floating point numbers");
 				}
 		};
 
