@@ -1,5 +1,6 @@
 #include "OperandFactory.hpp"
 #include "Operand.hpp"
+#include <stdexcept>
 
 OperandFactory	operandFactory;
 
@@ -30,12 +31,22 @@ IOperand const	*OperandFactory::createOperand(eOperandType type, std::string con
 
 IOperand const	*OperandFactory::createInt8(std::string const &value) const
 {
-	return (static_cast<IOperand const *>(new Operand<int8_t>(std::stoi(value))));
+	IOperand	*result;
+
+	result = new Operand<int8_t>(std::stoi(value));
+	if (std::stoi(result->toString()) != stoi(value))
+		throw (std::out_of_range("stoi: out of range"));
+	return (static_cast<IOperand const *>(result));
 }
 
 IOperand const	*OperandFactory::createInt16(std::string const &value) const
 {
-	return (static_cast<IOperand const *>(new Operand<int16_t>(std::stoi(value))));
+	IOperand	*result;
+
+	result = new Operand<int16_t>(std::stoi(value));
+	if (std::stoi(result->toString()) != stoi(value))
+		throw (std::out_of_range("stoi: out of range"));
+	return (static_cast<IOperand const *>(result));
 }
 
 IOperand const	*OperandFactory::createInt32(std::string const &value) const
@@ -45,7 +56,7 @@ IOperand const	*OperandFactory::createInt32(std::string const &value) const
 
 IOperand const	*OperandFactory::createFloat(std::string const &value) const
 {
-	return (static_cast<IOperand const *>(new Operand<float>(std::stod(value))));
+	return (static_cast<IOperand const *>(new Operand<float>(std::stof(value))));
 }
 
 IOperand const	*OperandFactory::createDouble(std::string const &value) const

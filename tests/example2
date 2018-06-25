@@ -1,0 +1,17 @@
+; ----------
+; exemple2 -
+; ----------
+
+push int8(84)
+print
+push int8(101)
+print
+push int8(115)
+print
+push int8(116)
+print
+push int8(10)
+print
+
+exit
+dump

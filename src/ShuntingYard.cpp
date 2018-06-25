@@ -12,38 +12,6 @@ const char*	ParenthesesMismatchedException::what(void) const noexcept
 	return ("parentheses mismatched");
 }
 
-InvalidTokenException::InvalidTokenException(const std::string &token)
-{
-	_token = token;
-}
-const char*	InvalidTokenException::what(void) const noexcept
-{
-	static std::string	str;
-
-	str = "invalid token ";
-	str.append(_token);
-	return (str.c_str());
-}
-
-InvalidTokenException::InvalidTokenException(void)
-{
-}
-
-InvalidTokenException::InvalidTokenException(const InvalidTokenException &b)
-{
-	(void)b;
-}
-
-InvalidTokenException::~InvalidTokenException(void)
-{
-}
-
-InvalidTokenException	&InvalidTokenException::operator=(const InvalidTokenException &b)
-{
-	(void)b;
-	return (*this);
-}
-
 template		<typename T>
 static int	find(const std::vector<T> &vector, const T &b)
 {
@@ -143,7 +111,6 @@ std::vector<std::string>	*ShuntingYard(
 	}
 	while (getToken(string, functions, operators, brackets, comments, i, token))
 	{
-		log << "token: " << token << std::endl;
 		if (numbers.find(token[0]) != std::string::npos)
 			output->push_back(token);
 		else if (find(functions, token) != -1)

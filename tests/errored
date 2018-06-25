@@ -1,0 +1,24 @@
+; ---------
+; errored -
+; ---------
+
+push int8(128)
+push int8(-129)
+push int32(127)
+push int16(0)
+div
+push double(127)
+push float(0)
+mod
+push int32(42)
+add
+Invalid
+push int32(5) int16(6)
+dump
+add
+push double(37.5)
+print
+assert double(37.6)
+;;
+dump
+mod

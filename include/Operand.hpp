@@ -57,33 +57,7 @@ class	Operand : public IOperand
 			switch (rhs.getType())
 			{
 				case Int8:
-				{
-					if (getPrecision() < rhs.getPrecision())
-						return (operandFactory.createOperand(
-							rhs.getType(),
-							std::to_string(
-								_value + std::stoi(rhs.toString()))));
-					else
-						return (operandFactory.createOperand(
-							getType(),
-							std::to_string(
-								_value + std::stoi(rhs.toString()))));
-					break;
-				}
 				case Int16:
-				{
-					if (getPrecision() < rhs.getPrecision())
-						return (operandFactory.createOperand(
-							rhs.getType(),
-							std::to_string(
-								_value + std::stoi(rhs.toString()))));
-					else
-						return (operandFactory.createOperand(
-							getType(),
-							std::to_string(
-								_value + std::stoi(rhs.toString()))));
-					break;
-				}
 				case Int32:
 				{
 					if (getPrecision() < rhs.getPrecision())
@@ -99,19 +73,6 @@ class	Operand : public IOperand
 					break;
 				}
 				case Float:
-				{
-					if (getPrecision() < rhs.getPrecision())
-						return (operandFactory.createOperand(
-							rhs.getType(),
-							std::to_string(
-								_value + std::stod(rhs.toString()))));
-					else
-						return (operandFactory.createOperand(
-							getType(),
-							std::to_string(
-								_value + std::stod(rhs.toString()))));
-					break;
-				}
 				case Double:
 				{
 					if (getPrecision() < rhs.getPrecision())
@@ -139,33 +100,7 @@ class	Operand : public IOperand
 			switch (rhs.getType())
 			{
 				case Int8:
-				{
-					if (getPrecision() < rhs.getPrecision())
-						return (operandFactory.createOperand(
-							rhs.getType(),
-							std::to_string(
-								_value - std::stoi(rhs.toString()))));
-					else
-						return (operandFactory.createOperand(
-							getType(),
-							std::to_string(
-								_value - std::stoi(rhs.toString()))));
-					break;
-				}
 				case Int16:
-				{
-					if (getPrecision() < rhs.getPrecision())
-						return (operandFactory.createOperand(
-							rhs.getType(),
-							std::to_string(
-								_value - std::stoi(rhs.toString()))));
-					else
-						return (operandFactory.createOperand(
-							getType(),
-							std::to_string(
-								_value - std::stoi(rhs.toString()))));
-					break;
-				}
 				case Int32:
 				{
 					if (getPrecision() < rhs.getPrecision())
@@ -181,19 +116,6 @@ class	Operand : public IOperand
 					break;
 				}
 				case Float:
-				{
-					if (getPrecision() < rhs.getPrecision())
-						return (operandFactory.createOperand(
-							rhs.getType(),
-							std::to_string(
-								_value - std::stod(rhs.toString()))));
-					else
-						return (operandFactory.createOperand(
-							getType(),
-							std::to_string(
-								_value - std::stod(rhs.toString()))));
-					break;
-				}
 				case Double:
 				{
 					if (getPrecision() < rhs.getPrecision())
@@ -221,33 +143,7 @@ class	Operand : public IOperand
 			switch (rhs.getType())
 			{
 				case Int8:
-				{
-					if (getPrecision() < rhs.getPrecision())
-						return (operandFactory.createOperand(
-							rhs.getType(),
-							std::to_string(
-								_value * std::stoi(rhs.toString()))));
-					else
-						return (operandFactory.createOperand(
-							getType(),
-							std::to_string(
-								_value * std::stoi(rhs.toString()))));
-					break;
-				}
 				case Int16:
-				{
-					if (getPrecision() < rhs.getPrecision())
-						return (operandFactory.createOperand(
-							rhs.getType(),
-							std::to_string(
-								_value * std::stoi(rhs.toString()))));
-					else
-						return (operandFactory.createOperand(
-							getType(),
-							std::to_string(
-								_value * std::stoi(rhs.toString()))));
-					break;
-				}
 				case Int32:
 				{
 					if (getPrecision() < rhs.getPrecision())
@@ -263,19 +159,6 @@ class	Operand : public IOperand
 					break;
 				}
 				case Float:
-				{
-					if (getPrecision() < rhs.getPrecision())
-						return (operandFactory.createOperand(
-							rhs.getType(),
-							std::to_string(
-								_value * std::stod(rhs.toString()))));
-					else
-						return (operandFactory.createOperand(
-							getType(),
-							std::to_string(
-								_value * std::stod(rhs.toString()))));
-					break;
-				}
 				case Double:
 				{
 					if (getPrecision() < rhs.getPrecision())
@@ -303,37 +186,7 @@ class	Operand : public IOperand
 			switch (rhs.getType())
 			{
 				case Int8:
-				{
-					if (!std::stoi(rhs.toString()))
-						throw (DivisionByZeroException());
-					if (getPrecision() < rhs.getPrecision())
-						return (operandFactory.createOperand(
-							rhs.getType(),
-							std::to_string(
-								_value / std::stoi(rhs.toString()))));
-					else
-						return (operandFactory.createOperand(
-							getType(),
-							std::to_string(
-								_value / std::stoi(rhs.toString()))));
-					break;
-				}
 				case Int16:
-				{
-					if (!std::stoi(rhs.toString()))
-						throw (DivisionByZeroException());
-					if (getPrecision() < rhs.getPrecision())
-						return (operandFactory.createOperand(
-							rhs.getType(),
-							std::to_string(
-								_value / std::stoi(rhs.toString()))));
-					else
-						return (operandFactory.createOperand(
-							getType(),
-							std::to_string(
-								_value / std::stoi(rhs.toString()))));
-					break;
-				}
 				case Int32:
 				{
 					if (!std::stoi(rhs.toString()))
@@ -351,21 +204,6 @@ class	Operand : public IOperand
 					break;
 				}
 				case Float:
-				{
-					if (!std::stod(rhs.toString()))
-						throw (DivisionByZeroException());
-					if (getPrecision() < rhs.getPrecision())
-						return (operandFactory.createOperand(
-							rhs.getType(),
-							std::to_string(
-								_value / std::stod(rhs.toString()))));
-					else
-						return (operandFactory.createOperand(
-							getType(),
-							std::to_string(
-								_value / std::stod(rhs.toString()))));
-					break;
-				}
 				case Double:
 				{
 					if (!std::stod(rhs.toString()))
@@ -398,37 +236,7 @@ class	Operand : public IOperand
 			switch (rhs.getType())
 			{
 				case Int8:
-				{
-					if (!std::stoi(rhs.toString()))
-						throw (DivisionByZeroException());
-					if (getPrecision() < rhs.getPrecision())
-						return (operandFactory.createOperand(
-							rhs.getType(),
-							std::to_string(
-								static_cast<int32_t>(_value) % std::stoi(rhs.toString()))));
-					else
-						return (operandFactory.createOperand(
-							getType(),
-							std::to_string(
-								static_cast<int32_t>(_value) % std::stoi(rhs.toString()))));
-					break;
-				}
 				case Int16:
-				{
-					if (!std::stoi(rhs.toString()))
-						throw (DivisionByZeroException());
-					if (getPrecision() < rhs.getPrecision())
-						return (operandFactory.createOperand(
-							rhs.getType(),
-							std::to_string(
-								static_cast<int32_t>(_value) % std::stoi(rhs.toString()))));
-					else
-						return (operandFactory.createOperand(
-							getType(),
-							std::to_string(
-								static_cast<int32_t>(_value) % std::stoi(rhs.toString()))));
-					break;
-				}
 				case Int32:
 				{
 					if (!std::stoi(rhs.toString()))
@@ -446,10 +254,6 @@ class	Operand : public IOperand
 					break;
 				}
 				case Float:
-				{
-					throw (FloatModulus());
-					break;
-				}
 				case Double:
 				{
 					throw (FloatModulus());
@@ -463,12 +267,78 @@ class	Operand : public IOperand
 			}
 		}
 
+		virtual bool			operator==(IOperand const &rhs) const
+		{
+			const IOperand	*result;
+			bool			ret;
+
+			result = *this - rhs;
+			ret = (stod(result->toString()) == 0) ? true : false;
+			delete result;
+			return (ret);
+		}
+
+		virtual bool			operator!=(IOperand const &rhs) const
+		{
+			const IOperand	*result;
+			bool			ret;
+
+			result = *this - rhs;
+			ret = (stod(result->toString()) != 0) ? true : false;
+			delete result;
+			return (ret);
+		}
+
+		virtual bool			operator<(IOperand const &rhs) const
+		{
+			const IOperand	*result;
+			bool			ret;
+
+			result = *this - rhs;
+			ret = (stod(result->toString()) < 0) ? true : false;
+			delete result;
+			return (ret);
+		}
+
+		virtual bool			operator<=(IOperand const &rhs) const
+		{
+			const IOperand	*result;
+			bool			ret;
+
+			result = *this - rhs;
+			ret = (stod(result->toString()) <= 0) ? true : false;
+			delete result;
+			return (ret);
+		}
+
+		virtual bool			operator>(IOperand const &rhs) const
+		{
+			const IOperand	*result;
+			bool			ret;
+
+			result = *this - rhs;
+			ret = (stod(result->toString()) > 0) ? true : false;
+			delete result;
+			return (ret);
+		}
+
+		virtual bool			operator>=(IOperand const &rhs) const
+		{
+			const IOperand	*result;
+			bool			ret;
+
+			result = *this - rhs;
+			ret = (stod(result->toString()) >= 0) ? true : false;
+			delete result;
+			return (ret);
+		}
+
 		virtual std::string const	&toString(void) const
 		{
 			return (_str);
 		}
 
-		class	UnknownTypeException : std::exception
+		class	UnknownTypeException : public std::exception
 		{
 			public:
 				virtual const char	*what(void) const noexcept
@@ -477,7 +347,7 @@ class	Operand : public IOperand
 				}
 		};
 
-		class	FloatModulus : std::exception
+		class	FloatModulus : public std::exception
 		{
 			public:
 				virtual const char	*what(void) const noexcept
@@ -486,7 +356,7 @@ class	Operand : public IOperand
 				}
 		};
 
-		class	DivisionByZeroException : std::exception
+		class	DivisionByZeroException : public std::exception
 		{
 			public:
 				virtual const char	*what(void) const noexcept

@@ -1,0 +1,13 @@
+; ----------
+; exemple3 -
+; ----------
+
+push int8(97)
+print
+cmp 122
+jge 6
+inc
+jmp 1
+push int8(10)
+print
+exit
