@@ -1,0 +1,16 @@
+bonus list, because i always forgot one during correction .___.
+
+instructions:
+	compare instruction (cmp)
+	jump instruction (jmp)
+	conditional jumps (je, jne, jl, jle, jg, jge)
+	increment and decrement instructions (inc, dec)
+	binary operators (and, or, xor)
+
+int64
+
+error are not fatal, execution will try to continue when catching one
+
+advanced log
+
+arithmetic calculus available in parallel of static number writing
