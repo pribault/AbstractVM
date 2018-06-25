@@ -278,6 +278,8 @@ class	Operand : public IOperand
 
 		virtual IOperand const	*operator&(IOperand const &rhs) const
 		{
+			if (getType() == Float || getType() == Double)
+				throw (BinaryOnFloatException());
 			switch (rhs.getType())
 			{
 				case Int8:
@@ -313,6 +315,8 @@ class	Operand : public IOperand
 
 		virtual IOperand const	*operator|(IOperand const &rhs) const
 		{
+			if (getType() == Float || getType() == Double)
+				throw (BinaryOnFloatException());
 			switch (rhs.getType())
 			{
 				case Int8:
@@ -348,6 +352,8 @@ class	Operand : public IOperand
 
 		virtual IOperand const	*operator^(IOperand const &rhs) const
 		{
+			if (getType() == Float || getType() == Double)
+				throw (BinaryOnFloatException());
 			switch (rhs.getType())
 			{
 				case Int8:

@@ -356,7 +356,7 @@ void	_or(const std::string &token, std::stack<const IOperand *> &, std::vector<c
 	stack.push_back(*a | *b);
 	delete a;
 	delete b;
-	log << "binary and done" << std::endl;
+	log << "binary or done" << std::endl;
 }
 
 void	_xor(const std::string &token, std::stack<const IOperand *> &, std::vector<const IOperand *> &stack, size_t &)
@@ -373,7 +373,7 @@ void	_xor(const std::string &token, std::stack<const IOperand *> &, std::vector<
 	stack.push_back(*a ^ *b);
 	delete a;
 	delete b;
-	log << "binary and done" << std::endl;
+	log << "binary xor done" << std::endl;
 }
 
 typedef struct	s_data
