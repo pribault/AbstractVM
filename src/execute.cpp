@@ -538,7 +538,7 @@ void	execute(const std::vector<std::string> *rpn, std::vector<const IOperand *> 
 							delete tmp.top();
 							tmp.pop();
 						}
-						throw;
+						throw (NotEnoughOperandsException(rpn->at(i)));
 					}
 					delete a;
 				}
